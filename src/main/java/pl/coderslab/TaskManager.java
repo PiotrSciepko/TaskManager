@@ -1,7 +1,6 @@
 package pl.coderslab;
 
 import org.apache.commons.lang3.StringUtils;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -90,6 +89,7 @@ public class TaskManager {
         System.out.println("Is your task important? (true/false)");
         newTask += sc.nextLine();
         tasks.add(newTask);
+        exportProjectFile();
         mainMenu();
     }
 
