@@ -77,7 +77,6 @@ public class TaskManager {
             System.out.print(ConsoleColors.RESET);
             System.out.println((i + 1) + " : " + s.substring(0, s.lastIndexOf(" ")) + ConsoleColors.RED + s.substring(s.lastIndexOf(" ")));
         }
-        //System.out.println();
         mainMenu();
     }
 
