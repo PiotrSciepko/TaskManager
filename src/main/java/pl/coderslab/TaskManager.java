@@ -103,7 +103,7 @@ public class TaskManager {
                 int taskToBeRemoved = Integer.parseInt(s);
                 if (taskToBeRemoved >= 1 && taskToBeRemoved <= tasks.size()) {
                     tasks.remove(taskToBeRemoved - 1);
-                    System.out.println("Value was successfully deleted");
+                    System.out.println("Value has been successfully deleted");
                     break;
                 } else if (taskToBeRemoved == 0) {
                     break;
