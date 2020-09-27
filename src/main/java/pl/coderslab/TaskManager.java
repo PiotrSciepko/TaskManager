@@ -11,15 +11,15 @@ import java.util.Scanner;
 
 public class TaskManager {
 
-    private static final String projectFile = "tasks.csv";
-    private static List<String> tasks = importProjectFile();
+    private static final String PROJECT_FILE = "tasks.csv";
+    private static final List<String> TASKS = importProjectFile();
 
     public static void main(String[] args) {
         mainMenu();
     }
 
     private static List<String> importProjectFile() {
-        Path path = Paths.get(projectFile);
+        Path path = Paths.get(PROJECT_FILE);
         List<String> tasks = new ArrayList<>();
         try {
             tasks = Files.readAllLines(path);
@@ -31,9 +31,9 @@ public class TaskManager {
     }
 
     private static void exportProjectFile() {
-        Path path = Paths.get(projectFile);
+        Path path = Paths.get(PROJECT_FILE);
         try {
-            Files.write(path, tasks);
+            Files.write(path, TASKS);
         } catch (IOException e) {
             System.out.println("Cannot export data");
         }
@@ -50,7 +50,8 @@ public class TaskManager {
         Scanner sc = new Scanner(System.in);
         String s = "";
         while (!menuItems.contains(s)) {
-            switch (s = sc.next()) {
+            s = sc.next().toLowerCase();
+            switch (s) {
                 case "add":
                     addTask();
                     break;
@@ -71,8 +72,8 @@ public class TaskManager {
     }
 
     private static void displayListOfTasks() {
-        for (int i = 0; i < tasks.size(); i++) {
-            String s = tasks.get(i).replace(",", " ");
+        for (int i = 0; i < TASKS.size(); i++) {
+            String s = TASKS.get(i).replace(",", " ");
             System.out.print(ConsoleColors.RESET);
             System.out.println((i + 1) + " : " + s.substring(0, s.lastIndexOf(" ")) + ConsoleColors.RED + s.substring(s.lastIndexOf(" ")));
         }
@@ -88,7 +89,7 @@ public class TaskManager {
         newTask += sc.nextLine() + ", ";
         System.out.println("Is your task important? (true/false)");
         newTask += sc.nextLine();
-        tasks.add(newTask);
+        TASKS.add(newTask);
         exportProjectFile();
         mainMenu();
     }
@@ -101,14 +102,14 @@ public class TaskManager {
             String s = sc.next();
             if (StringUtils.isNumeric(s)) {
                 int taskToBeRemoved = Integer.parseInt(s);
-                if (taskToBeRemoved >= 1 && taskToBeRemoved <= tasks.size()) {
-                    tasks.remove(taskToBeRemoved - 1);
+                if (taskToBeRemoved >= 1 && taskToBeRemoved <= TASKS.size()) {
+                    TASKS.remove(taskToBeRemoved - 1);
                     System.out.println("Value has been successfully deleted");
                     break;
                 } else if (taskToBeRemoved == 0) {
                     break;
                 } else {
-                    System.out.println("Select number (1 - " + tasks.size() + ")" + "... or press 0 to cancel");
+                    System.out.println("Select number (1 - " + TASKS.size() + ")" + "... or press 0 to cancel");
                     continue;
                 }
             }
