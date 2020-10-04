@@ -1,4 +1,4 @@
-package pl.coderslab;
+package com.PiotrS;
 
 /**
  * https://stackoverflow.com/a/45444716

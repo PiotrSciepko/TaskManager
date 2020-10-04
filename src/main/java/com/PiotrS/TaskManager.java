@@ -1,4 +1,4 @@
-package pl.coderslab;
+package com.PiotrS;
 
 import org.apache.commons.lang3.StringUtils;
 import java.io.IOException;
